@@ -19,7 +19,7 @@ module.exports = class facturaController{
         try {
             const doc = request.body;
             const facturas = await facturaModel.create(doc);
-            response.status(200).json(facturas);
+            response.status(201).json(facturas);
 
         } catch (error) {
             return response.status(500).json({
