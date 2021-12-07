@@ -33,6 +33,9 @@ function App() {
                         <NavItem>
                             <NavLink href="/RegistroComic">Registrarse</NavLink>
                         </NavItem>
+                        <NavItem>
+                            <NavLink href="/compras">facturas</NavLink>
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>

@@ -3,9 +3,9 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Card, CardImg, CardBody,
-    CardTitle, CardText, Button, Modal,
-    ModalBody,ModalHeader,FormGroup,Label
+    CardTitle, CardText, Button, CardFooter
 } from "reactstrap"
+import Modals from './Modal';
 
   
 const Cards = ({respuesta}) => {
@@ -13,72 +13,42 @@ const Cards = ({respuesta}) => {
     const [modal, setModal] = React.useState(false);
     
     // Toggle for Modal
-    const toggle = () => setModal(!modal);
+    //const toggle = () => setModal(!modal);
     return (
         <div style={{
-            display: 'block', width:  '18rem', padding: 30, color: 'Black', fontSize: 14, textAlign:'justify'
+            display: 'flex', width:'225px', color: 'Black', fontSize: 14, textAlign:'justify', 
         }}>
+            
             {console.log('esto es elemento en cards: ', respuesta)}
-            {respuesta.map((elemento) => {
-                
-                console.log(elemento);
-
-                <Card >
-                <CardImg variant="top" src="https://i2.wp.com/wipy.tv/wp-content/uploads/2021/05/green-lantern.jpg?fit=1000%2C600&ssl=1" />
-                <CardBody>
-                    <CardTitle>{elemento.titulo}</CardTitle>
-                    <CardText>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                    </CardText>
-                    <Button color="primary"
-               onClick={toggle}>comprar</Button>
-                </CardBody>
-                </Card>
-            })}
-                
-             
             
-
+                    <div>
+                   
+                    <Card >
+                    <CardImg variant="top" 
+                    src="https://i2.wp.com/wipy.tv/wp-content/uploads/2021/05/green-lantern.jpg?fit=1000%2C600&ssl=1" />
+                    <CardBody>
+                        <CardTitle>{respuesta.titulo} vol: {respuesta.volumen}</CardTitle>    
+                        <hr /> 
+                        <CardText>
+                        {respuesta.descripcion}
+                        </CardText>
+                        <hr />     
+                    </CardBody>
+                    <CardFooter >
+                        $ {respuesta.precio}  | 
+                        
+                        <Button color="primary"
+                        onClick={()=>{setModal(!modal)}}>comprar</Button>
+                    </CardFooter>
+                    </Card>
+                    <Modals modal={modal} setModal={setModal}  elemento={respuesta}/> 
+                    {/* i={i} */}
+                    </div>
+                )    
+            
+            
  
-            
-            <div style={{
-            display: 'block', width:  '100%', padding: 30, color: 'Black', fontSize: 14, textAlign:'justify'
-        }}>
-            <Modal isOpen={modal}
-                
-                toggle={toggle}
-                modalTransition={{ timeout: 1000 }}>
-                <ModalHeader>Pantalla de compra</ModalHeader>
-                <ModalBody>
-                <ModalHeader>Informacion de compra</ModalHeader>
-                    <FormGroup>
-                        <Label>Fecha</Label>
-                        
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>comic</Label>
-                        
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Usuario</Label>
-                        
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>serial</Label>
-                        
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Precio</Label>
-                        
-                    </FormGroup>
-                    
-                    <Button>Confirmar compra</Button>
-                </ModalBody>
-
-            </Modal>
-            </div>
-            
+           
         </div>
     );
 }

@@ -1,4 +1,4 @@
-//import React, { useState } from 'react';
+import React, {  useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useHistory } from 'react-router-dom';
@@ -13,11 +13,15 @@ const LogginComic = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  useEffect(()=>{
+    localStorage.setItem('usuario','')
 
+  },[])
   const onSubmit = async (data) => {
-    history.push('/Inicio');
+    //history.push('/Inicio');
+    localStorage.setItem('usuario',data.email)
     const response = await axios.post(
-      'http://localhost:3000/authenticate',
+      'http://127.0.0.1:2021/api/autenticar',
       data
     );
     console.log('Esta es la respuesta del servidor: ', response);
@@ -26,7 +30,7 @@ const LogginComic = () => {
         type: 'success',
         autoClose: 3500,
       });
-      // history.push('/Inicio');
+      history.push('/');
     }
   };
 

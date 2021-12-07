@@ -15,15 +15,15 @@ const RegistroComic = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    history.push('/Inicio');
-    const response = await axios.post('http://localhost:3000/register', data);
+    //history.push('/Inicio');
+    const response = await axios.post('http://127.0.0.1:2021/api/registro', data);
     console.log('Esta es la respuesta del servidor: ', response);
     if (response.status === 200) {
       toast('Se ha registrado correctamente', {
         type: 'success',
         autoClose: 3500,
       });
-      // history.push('/Inicio');
+       history.push('/logginComic');
     }
   };
 

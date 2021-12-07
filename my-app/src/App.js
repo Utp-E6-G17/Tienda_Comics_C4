@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Inicio from './components/Inicio';
 import LogginComic from './components/LogginComic';
+import Facturas from './components/Facturas'
 function App() {
   return (
     <div className="App">
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route exact path='/RegistroComic'>
               <Registro/>
+            </Route>
+            <Route exact path='/compras'>
+              <Facturas/>
             </Route>
           </Switch>
         </Router>

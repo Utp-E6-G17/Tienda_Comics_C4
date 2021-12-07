@@ -63,7 +63,7 @@ function App() {
   
     return (
         <div style={{
-            display: 'block', width: "100%", padding: 30
+            display: 'flow', padding: 30
         }}>
            
             <Carousel previous={previousButton} next={nextButton}
